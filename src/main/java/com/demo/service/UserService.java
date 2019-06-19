@@ -12,19 +12,16 @@ public class UserService {
     @Autowired
     UserMapper userMapper;
 
-    public User findUser(String userName){
-        return userMapper.findUser(userName);
+    public int findUser(User user){
+        return userMapper.finduser(user);
     }
 
-    public String getNickname(String username) {
-        return userMapper.getNickname(username);
-    }
 
     public void insertUser(User user){
          userMapper.add(user);
     }
 
-    public List<User> selectAll(){
-        return userMapper.findAll();
+    public int login(User user) {
+        return userMapper.login(user);
     }
 }

@@ -160,7 +160,7 @@
         })
     }
     function toorder(){
-        window.location="showorder.jsp";
+        window.location="home.jsp";
     }
     window.onload=allmenu();
     window.onload=getnickname();
