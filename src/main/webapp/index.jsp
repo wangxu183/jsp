@@ -224,6 +224,7 @@
 </body>
 </html>
 <script language="JavaScript">
+    <%--调用后台接口，实现登录操作--%>
     function tohome() {
         var uname=$("#u").val();
         var pwd=$("#p").val();
@@ -256,16 +257,18 @@
 
         });
     }
-
+    //跳转到注册界面
     function goo() {
         window.location="userRegister.jsp";
     }
+    //设置cookie，实现界面传参
     function setCookie(cname,cvalue) {
         var d=new Date();
         d.setTime(d.getTime()+7*24*60*60*1000);
         var expires="expires="+d.toGMTString();
         document.cookie=cname+"="+cvalue+";"+expires;
     }
+    //读取指定cookie，获取传值
     function getCookie(cname){
         var name=cname+"=";
         var ca=document.cookie.split(';');

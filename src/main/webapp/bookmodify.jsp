@@ -114,6 +114,8 @@
 </html>
 
 <script type="text/javascript">
+    //进入界面是执行该方法
+    window.onload=getbook();
     function setImagePreview() {
         var docObj = document.getElementById("img");
         var imgObjPreview = document.getElementById("preview");
@@ -148,7 +150,9 @@
         }
         return true;
     }
+    //调用后台接口，根据书籍编号获取书籍信息并显示在界面上
     function getbook() {
+        //获取cookie名为“bookid”所携带的参数值
         var id=getCookie("bookid");
         $.ajax({
             type:"post",
@@ -158,9 +162,11 @@
             dataType: "json",
             success:function (data) {
                console.log(data);
+               //通过标签的id给标签赋值
                document.getElementById("bookname").value=data.bookname;
                var t=data.type;
                console.log(t);
+                //使select标签显示指定的value值（不是文本值）
                 $("#cateId").val(t);
                document.getElementById("bookprice").value=data.price;
                 document.getElementById("bookauthor").value=data.author;
@@ -173,14 +179,19 @@
         })
     }
     function update() {
+        //界面出现选择框（confirm），显示内容：确认修改该书籍
+        //点击确认按钮，执行updatebook()方法
         if(confirm("确认修改该书籍？")){
             updatebook();
         }
     }
+    //调用后台接口，修改书籍
     function updatebook() {
         var book={
             id:getCookie("bookid"),
+            //根据标签的id获取标签的值，并赋值给定义的参数
             bookname:$("#bookname").val(),
+            //获取select标签选中的值
             type:$("#cateId").find("option:selected").text(),
             price:$("#bookprice").val(),
             author:$("#bookauthor").val(),
@@ -212,5 +223,5 @@
             }
         }
     }
-    window.onload=getbook();
+
 </script>

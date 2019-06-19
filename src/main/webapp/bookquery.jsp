@@ -101,6 +101,7 @@
 </body>
 </html>
 <script language="JavaScript">
+    <%--调用后台接口获取查询结果--%>
     function findbook() {
         var book={
             bookname:$("#bookname").val()
@@ -117,7 +118,7 @@
                 for (var i = 0; i < data.length; i++) {
                     //拼接表格的行和列
                     str = "<tr> <td class='tc'> <input name='ids[]' type='checkbox' class='singleChoose'> </td><td>"+data[i].bookname+"</td> <td>"+data[i].author+"</td> <td>"+data[i].type+"</td> <td>"+data[i].publish+"</td> <td>"+data[i].price+"</td> <td>"+data[i].description+"</td></tr>";
-                    //追加到table中
+                    //根据table标签的id追加到指定table中
                     $("#tab").append(str);
                 }
             },

@@ -17,6 +17,7 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    //添加书籍
     @RequestMapping(value = "add",method = RequestMethod.PUT)
     @ResponseBody
     public int add(@RequestBody Book book){
@@ -27,12 +28,15 @@ public class BookController {
         }
         return i;
     }
+
+    //根据传入进来的参数，使用模糊查询根据书籍的名字查询书籍
     @RequestMapping(value = "findbook",method = RequestMethod.POST)
     @ResponseBody
     public List<Book> findbook(@RequestBody Book book){
         return bookService.findbook(book);
     }
 
+    //查询该用户添加的书籍
     @RequestMapping(value = "findbookbyuser",method = RequestMethod.POST)
     @ResponseBody
     public List<Book> find(@RequestBody Book book){
@@ -40,6 +44,7 @@ public class BookController {
         return list;
     }
 
+    //根据书籍的ID删除该用户添加的书籍
     @RequestMapping(value = "delbook",method = RequestMethod.DELETE)
     @ResponseBody
     public int deletebook(@RequestBody int num){
@@ -50,6 +55,7 @@ public class BookController {
         }
         return i;
     }
+    //根据书籍编号ID查询书籍
     @RequestMapping(value = "findbookByid",method = RequestMethod.POST)
     @ResponseBody
     public Book findbookByid(@RequestBody int num){
@@ -57,6 +63,7 @@ public class BookController {
         return bookService.findbookbyid(num);
     }
 
+    //根据书籍的ID修改该用户添加的数据
     @RequestMapping(value = "updatebook",method = RequestMethod.PUT)
     @ResponseBody
     public int updatebook(@RequestBody Book book){
